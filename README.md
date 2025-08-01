@@ -19,13 +19,16 @@ Logs
 Where it runs
 • The Python container runs on a Kubernetes cluster that Terraform builds for you in AWS (or GCP/Azure).
 • A Kubernetes Service of type LoadBalancer gives the API a public URL so anyone can test latency from your cluster to any host.
+
 How you observe it
 • Prometheus automatically scrapes the /metrics endpoint and stores the counters and histograms.
 • Grafana dashboards show: requests-per-second, 95th-percentile latency, error rate, node CPU/RAM, etc.
 • Alertmanager can page you if p95 latency goes above a threshold or error rate spikes.
+
 Automation around it
 • GitHub Actions pipeline lints and tests the Python code, builds the Docker image, pushes it to a registry, and upgrades the Kubernetes deployment—so every commit gives you a fresh version in the cloud with zero manual steps.
 • Terraform keeps the cluster, network, and IAM roles under version control, so you can recreate or destroy the whole environment with one command.
+
 Why it’s useful 
 • Shows real Linux/TCP behaviour (handshake timing) in a cloud network.
 •  end-to-end SRE tooling: IaC → cluster → CI/CD → metrics → logs → alerts.
