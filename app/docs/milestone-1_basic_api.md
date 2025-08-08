@@ -28,8 +28,6 @@ GET /ping?target=github.com → 200 OK { "target": "github.com", "latency": 0.05
 
 ## File layout introduced in this milestone
 
-
-// END GENAI
 . ├── app/ │ └── app.py # Flask code └── requirements.txt # Python deps (flask)
 
 
